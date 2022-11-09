@@ -23,9 +23,11 @@ import { lineHeightPlugin } from "./plugins/LineHeightPlugin";
 import { alignPlugin } from "./plugins/AlignPlugin";
 import { indentPlugin } from "./plugins/IndentPlugin";
 import { plateUI } from "./common/plateUi";
+import { basicNodesPlugins } from "./plugins/BasicNodesPlugin";
 
 const plugins = createMyPlugins(
   [
+    ...basicNodesPlugins,
     createImagePlugin(),
     createHorizontalRulePlugin(),
     createLineHeightPlugin(lineHeightPlugin),
@@ -49,7 +51,11 @@ const plugins = createMyPlugins(
 );
 
 const NewEditor = () => (
-  <Plate<MyValue> editableProps={editableProps} plugins={plugins} />
+  <Plate<MyValue>
+    editableProps={editableProps}
+    plugins={plugins}
+    onChange={(e) => console.log(e)}
+  />
 );
 
 export default NewEditor;
