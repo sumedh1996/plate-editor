@@ -14,7 +14,9 @@ import {
   createLineHeightPlugin,
   createTablePlugin,
   createTextIndentPlugin,
+  createDeserializeCsvPlugin,
   Plate,
+  createSoftBreakPlugin,
 } from "@udecode/plate";
 import { createJuicePlugin } from "@udecode/plate-juice";
 import { editableProps } from "./common/editableProps";
@@ -24,6 +26,7 @@ import { alignPlugin } from "./plugins/AlignPlugin";
 import { indentPlugin } from "./plugins/IndentPlugin";
 import { plateUI } from "./common/plateUi";
 import { basicNodesPlugins } from "./plugins/BasicNodesPlugin";
+import { softBreakPlugin } from "./plugins/SoftBreakPlugin";
 
 const plugins = createMyPlugins(
   [
@@ -43,6 +46,8 @@ const plugins = createMyPlugins(
     createIndentPlugin(indentPlugin),
     createTextIndentPlugin(),
     createDeserializeDocxPlugin(),
+    createSoftBreakPlugin(softBreakPlugin),
+    createDeserializeCsvPlugin(),
     createJuicePlugin(),
   ],
   {
