@@ -1,5 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   line-height: 1.4;
 }
 
@@ -24,7 +28,7 @@ td {
   width: 100%;
 }
 
-.tippy-box[data-theme~='tomato'] {
+.tippy-box[data-theme~="tomato"] {
   background-color: tomato;
   color: yellow;
 }
