@@ -10,9 +10,10 @@ import {
 export const plateUI = createPlateUI({
   [ELEMENT_CODE_BLOCK]: CodeBlockElement,
   [ELEMENT_PARAGRAPH]: withProps(StyledElement, {
-    // as: 'p',
+    as: 'p',
     styles: {
       root: {
+        position: 'relative',
         margin: 0,
         padding: '4px 0',
       },
