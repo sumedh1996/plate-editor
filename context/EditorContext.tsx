@@ -34,7 +34,7 @@ export default function EditorContextProvider(props: {
   );
 }
 
-export const useEditorContext = () => {
+export const useEditorContext: () => any = () => {
   const editorCtx = useContext(EditorContext);
   return editorCtx;
 };

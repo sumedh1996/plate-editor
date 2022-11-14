@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { HTMLAttributes, useEffect, useRef, useState } from 'react';
 import {
   createAlignPlugin,
   createDeserializeDocxPlugin,
@@ -23,7 +23,6 @@ import {
   createParagraphPlugin,
 } from '@udecode/plate';
 import { createJuicePlugin } from '@udecode/plate-juice';
-// import { editableProps } from './common/editableProps';
 import { createMyPlugins, MyValue } from './types/PlateTypes';
 import { lineHeightPlugin } from './plugins/LineHeightPlugin';
 import { alignPlugin } from './plugins/AlignPlugin';
@@ -34,13 +33,13 @@ import { softBreakPlugin } from './plugins/SoftBreakPlugin';
 import { ToolbarButtons } from './config/Toolbar';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import Menu from './config/Menu';
-import { useEditorContext } from '../../context/EditorContext';
+import SideToolbar from './config/SideToolbar';
 
 const NewEditor = () => {
-  const [node, setNode] = useState<Node | null>();
-  const { editorLocation } = useEditorContext();
-  console.log({ editorLocation });
+  const [selectedNode, setSelectedNode] = useState<
+    null | Element | DocumentFragment
+  >(null);
+
   const containerRef = useRef(null);
 
   const editableProps: TEditableProps<MyValue> = {
@@ -68,9 +67,48 @@ const NewEditor = () => {
         selection?.focusNode?.nodeValue?.trim() ||
         container?.nodeName.toLowerCase() !== 'p'
       ) {
-        setNode(null);
+        setSelectedNode(null);
       } else {
-        setNode(container);
+        setSelectedNode(container as Element);
+      }
+    },
+    onKeyDown: () => {
+      setSelectedNode(null);
+    },
+    onKeyUp: () => {
+      const selection = window.getSelection();
+      // const visibility = checkVisible(selection?.anchorNode?.parentElement);
+      // if (!visibility.visible) {
+      //   const y =
+      //     selection?.anchorNode?.parentElement.getBoundingClientRect().top +
+      //     window.pageYOffset;
+      //   if (visibility.bottom) {
+      //     window.scrollTo({ top: y - 610, behavior: 'smooth' });
+      //   } else {
+      //     window.scrollTo({ top: y - 180, behavior: 'smooth' });
+      //   }
+      // }
+      let container = selection?.focusNode;
+      while (
+        container &&
+        container.parentNode &&
+        !container?.parentElement?.classList?.contains('slate-ImageElement') &&
+        container.parentNode.nodeName.toLowerCase() !== 'p'
+      ) {
+        container = container.parentNode;
+      }
+      if (container?.parentElement?.nodeName.toLowerCase() !== 'p') {
+        container = null;
+      } else {
+        container = container.parentElement;
+      }
+      if (
+        selection?.focusNode?.nodeValue?.trim() ||
+        container?.nodeName.toLowerCase() !== 'p'
+      ) {
+        setSelectedNode(null);
+      } else {
+        setSelectedNode(container as Element);
       }
     },
   };
@@ -110,10 +148,8 @@ const NewEditor = () => {
           editableProps={editableProps}
           plugins={plugins}
           onChange={(e) => console.log(e)}
-          // initialValue={[{ type: ELEMENT_PARAGRAPH, children: [{ text: '' }] }]}
         >
-          {/* {node && <div className='absolute top-10 left-2 bottom-0'>Popup</div>} */}
-          {node && <Menu node={node} />}
+          <SideToolbar node={selectedNode} setNode={setSelectedNode} />
           <div className='z-10 fixed top-0 left-0 w-full bg-red-400 pt-2'>
             <HeadingToolbar
               style={{
