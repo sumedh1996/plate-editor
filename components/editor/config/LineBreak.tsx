@@ -1,34 +1,36 @@
 /* eslint-disable */
-import React, { useContext } from 'react';
-import { useEditorRef } from '@udecode/plate-core';
+import React from 'react';
+import { ELEMENT_DEFAULT, useEditorRef } from '@udecode/plate-core';
 import { ELEMENT_HR, insertNodes } from '@udecode/plate';
 import { useEditorContext } from '../../../context/EditorContext';
 
-const LineBreakBtn = ({ setNode }) => {
+const LineBreakBtn: React.FC<{
+  setNode: React.Dispatch<
+    React.SetStateAction<Element | DocumentFragment | null>
+  >;
+}> = ({ setNode }) => {
   const editor = useEditorRef();
-  const { editorLocation }: any = useEditorContext();
+  const { editorLocation } = useEditorContext();
 
   function insertBreak() {
     insertNodes(
       editor,
-      {
-        type: ELEMENT_HR,
-        children: [{ text: '' }],
-      },
+      [
+        {
+          type: ELEMENT_HR,
+          inline: true,
+          children: [{ text: '' }],
+        },
+        {
+          type: ELEMENT_DEFAULT,
+          children: [{ text: '' }],
+        },
+      ],
       {
         at: editorLocation ? editorLocation.anchor : [0, 0],
       }
-      // [
-      //   {
-      //     type: ELEMENT_HR,
-      //     inline: true,
-      //     children: [{ text: '' }],
-      //   },
-      // ],
-      // {
-      //   at: editorLocation ? editorLocation.anchor : [0, 0],
-      // }
     );
+
     setNode(null);
   }
 
@@ -41,7 +43,7 @@ const LineBreakBtn = ({ setNode }) => {
         color: 'var(--article-body)',
       }}
     >
-      <span>Line Break</span>&nbsp;&nbsp;
+      {/* <span>Line Break</span>&nbsp;&nbsp; */}
       <span>
         <p>HR</p>
       </span>

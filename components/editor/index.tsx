@@ -18,9 +18,10 @@ import {
   Plate,
   createSoftBreakPlugin,
   HeadingToolbar,
-  ELEMENT_PARAGRAPH,
   TEditableProps,
   createParagraphPlugin,
+  createSelectOnBackspacePlugin,
+  ELEMENT_HR,
 } from '@udecode/plate';
 import { createJuicePlugin } from '@udecode/plate-juice';
 import { createMyPlugins, MyValue } from './types/PlateTypes';
@@ -34,7 +35,6 @@ import { ToolbarButtons } from './config/Toolbar';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import SideToolbar from './config/SideToolbar';
-// import { createHorizontalRulePlugin } from './plugins/HorizontalRulePlugin';
 
 const NewEditor = () => {
   const [selectedNode, setSelectedNode] = useState<
@@ -119,10 +119,11 @@ const NewEditor = () => {
       ...basicNodesPlugins,
       createImagePlugin(),
       createHorizontalRulePlugin(),
-      // createHorizontalRulePlugin(),
+      createSelectOnBackspacePlugin({
+        options: { query: { allow: [ELEMENT_HR] } },
+      }),
       createLineHeightPlugin(lineHeightPlugin),
       createParagraphPlugin(),
-      // createLinkPlugin(),
       createTablePlugin(),
       createAlignPlugin(alignPlugin),
       createFontBackgroundColorPlugin(),
@@ -146,11 +147,7 @@ const NewEditor = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <div ref={containerRef} style={{ position: 'relative' }}>
-        <Plate
-          editableProps={editableProps}
-          plugins={plugins}
-          onChange={(e) => console.log(e)}
-        >
+        <Plate editableProps={editableProps} plugins={plugins}>
           <SideToolbar node={selectedNode} setNode={setSelectedNode} />
           <div className='z-10 fixed top-0 left-0 w-full bg-red-400 pt-2'>
             <HeadingToolbar

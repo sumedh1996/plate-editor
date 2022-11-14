@@ -6,7 +6,6 @@ import {
   ELEMENT_PARAGRAPH,
   StyledElement,
   withProps,
-  withStyledProps,
 } from '@udecode/plate';
 import { HRElement } from '../elements/HRElement';
 
@@ -24,14 +23,4 @@ export const plateUI = createPlateUI({
     prefixClassNames: 'p',
   }),
   [ELEMENT_HR]: HRElement,
-  // [ELEMENT_HR]: withProps(StyledElement, {
-  //   // as: document.createElement,
-  //   styles: {
-  //     root: {
-  //       height: '5px',
-  //       background: '#008080',
-  //     },
-  //   },
-  //   prefixClassNames: 'lmao',
-  // }),
 });
