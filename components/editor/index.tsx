@@ -34,6 +34,7 @@ import { ToolbarButtons } from './config/Toolbar';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import SideToolbar from './config/SideToolbar';
+// import { createHorizontalRulePlugin } from './plugins/HorizontalRulePlugin';
 
 const NewEditor = () => {
   const [selectedNode, setSelectedNode] = useState<
@@ -118,6 +119,7 @@ const NewEditor = () => {
       ...basicNodesPlugins,
       createImagePlugin(),
       createHorizontalRulePlugin(),
+      // createHorizontalRulePlugin(),
       createLineHeightPlugin(lineHeightPlugin),
       createParagraphPlugin(),
       // createLinkPlugin(),
