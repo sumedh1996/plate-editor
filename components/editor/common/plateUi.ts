@@ -2,12 +2,13 @@ import {
   CodeBlockElement,
   createPlateUI,
   ELEMENT_CODE_BLOCK,
-  ELEMENT_MEDIA_EMBED,
+  ELEMENT_HR,
   ELEMENT_PARAGRAPH,
   MediaEmbedElement,
   StyledElement,
   withProps,
-} from "@udecode/plate";
+} from '@udecode/plate';
+import { HRElement } from '../elements/HRElement';
 
 export const plateUI = createPlateUI({
   [ELEMENT_CODE_BLOCK]: CodeBlockElement,
@@ -22,11 +23,5 @@ export const plateUI = createPlateUI({
     },
     prefixClassNames: "p",
   }),
-  [ELEMENT_MEDIA_EMBED]: withProps(MediaEmbedElement, {
-    styles: {
-      input: {
-        display: "none",
-      },
-    },
-  }),
+  [ELEMENT_HR]: HRElement,
 });

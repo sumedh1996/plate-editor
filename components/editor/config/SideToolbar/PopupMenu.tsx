@@ -1,11 +1,11 @@
 /* eslint-disable */
 // stale
-import React, { useContext } from "react";
-import { useEditorRef } from "@udecode/plate-core";
+import React, { useContext } from 'react';
+import { useEditorRef } from '@udecode/plate-core';
 // import AddIcon from '@/../../public/Add.svg';
-import { useEditorContext } from "../../../../context/EditorContext";
-import LineBreakBtn from "../LineBreak";
-import EmbedButton from "../EmbedButton";
+import { useEditorContext } from '../../../../context/EditorContext';
+import LineBreakBtn from '../LineBreak';
+import EmbedButton from '../EmbedButton';
 // import EmbedButton from '../InsertMediaButton';
 // import ImageSearch from '../ImageButton';
 // import ImageUpload from '../ImageUpload';
@@ -16,7 +16,7 @@ import EmbedButton from "../EmbedButton";
 // import DividerButton from '../DividerButton';
 
 interface Props {
-  children: JSX.Element | HTMLElement;
+  children: React.ReactNode;
 }
 
 interface PopupMenuProps {
@@ -35,17 +35,17 @@ function SideBarButton({ children }: Props) {
   return (
     <button
       style={{
-        border: "2px solid var(--text-secondary)",
-        borderRadius: "15px",
-        padding: "3px",
-        paddingInline: "10px",
-        margin: "5px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-around",
-        background: "none",
-        height: "30px",
-        overflow: "hidden",
+        border: '2px solid var(--text-secondary)',
+        borderRadius: '15px',
+        padding: '3px',
+        paddingInline: '10px',
+        margin: '5px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        background: 'none',
+        height: '30px',
+        overflow: 'hidden',
       }}
     >
       {children}
@@ -63,7 +63,7 @@ function PopupMenu({
 // canMakeExclusive,
 PopupMenuProps) {
   const editor = useEditorRef();
-  const { editorLocation }: any = useEditorContext();
+  const { editorLocation } = useEditorContext();
 
   const buttons = [
     <LineBreakBtn setNode={setNode} />,
@@ -80,13 +80,13 @@ PopupMenuProps) {
   return (
     <span
       style={{
-        position: "absolute",
+        position: 'absolute',
         bottom: 0,
         top: 0,
-        left: "-10px",
-        transition: "all 1s ease-in-out",
-        display: "flex",
-        alignItems: "center",
+        left: '-10px',
+        transition: 'all 1s ease-in-out',
+        display: 'flex',
+        alignItems: 'center',
         zIndex: 50,
       }}
       contentEditable={false}
@@ -94,9 +94,9 @@ PopupMenuProps) {
       <button
         style={{
           transform: visible
-            ? "rotateZ(45deg) scale(1.3)"
-            : "rotateZ(0deg) scale(1.3)",
-          transition: "all 0.3s ease-in-out",
+            ? 'rotateZ(45deg) scale(1.3)'
+            : 'rotateZ(0deg) scale(1.3)',
+          transition: 'all 0.3s ease-in-out',
         }}
         onMouseDown={() => {
           setVisible((prev: boolean) => !prev);
@@ -106,17 +106,17 @@ PopupMenuProps) {
       </button>
       {visible && (
         <div
-          className="bg-backgroundColor-skin-secondary"
+          className='bg-backgroundColor-skin-secondary'
           style={{
-            width: "800px",
-            fontSize: "14px",
-            height: "20px",
-            position: "relative",
-            left: "10px",
-            transition: "all 1s ease",
-            display: "flex",
-            justifyContent: "flex-start",
-            alignItems: "center",
+            width: '800px',
+            fontSize: '14px',
+            height: '20px',
+            position: 'relative',
+            left: '10px',
+            transition: 'all 1s ease',
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
           }}
         >
           <>

@@ -13,7 +13,7 @@ interface ISideToolbarProps {
 
 const SideToolbar: React.FC<ISideToolbarProps> = ({ node, setNode }) => {
   const [visible, setVisible] = useState(false);
-  const { setEditorLocation } = useEditorContext();
+  const { setEditorLocation, editorLocation } = useEditorContext();
   const editor = useEditorRef();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const SideToolbar: React.FC<ISideToolbarProps> = ({ node, setNode }) => {
     return () => {
       setVisible(false);
     };
-  }, [editor.selection, setEditorLocation]);
+  }, [editor.selection, setEditorLocation, node]);
 
   if (!node) {
     return null;
