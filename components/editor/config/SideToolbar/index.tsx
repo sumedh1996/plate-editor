@@ -11,7 +11,7 @@ interface ISideToolbarProps {
   >;
 }
 
-const SideToolbar: React.FC<ISideToolbarProps> = ({ node, setNode }) => {
+const SideToolBar: React.FC<ISideToolbarProps> = ({ node, setNode }) => {
   const [visible, setVisible] = useState(false);
   const { setEditorLocation, editorLocation } = useEditorContext();
   const editor = useEditorRef();
@@ -34,4 +34,4 @@ const SideToolbar: React.FC<ISideToolbarProps> = ({ node, setNode }) => {
   );
 };
 
-export default SideToolbar;
+export default SideToolBar;

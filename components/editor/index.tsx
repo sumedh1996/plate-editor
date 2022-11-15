@@ -39,7 +39,7 @@ import { ToolbarButtons } from "./config/Toolbar";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { linkPlugin } from "./plugins/LinkPlugin";
-import SideToolbar from "./config/SideToolBar/index";
+import SideToolBar from "./config/SideToolBar";
 
 const NewEditor = () => {
   const [selectedNode, setSelectedNode] = useState<
@@ -157,7 +157,7 @@ const NewEditor = () => {
     <DndProvider backend={HTML5Backend}>
       <div ref={containerRef} style={{ position: "relative" }}>
         <Plate editableProps={editableProps} plugins={plugins}>
-          <SideToolbar node={selectedNode} setNode={setSelectedNode} />
+          <SideToolBar node={selectedNode} setNode={setSelectedNode} />
           <div className="z-10 fixed top-0 left-0 w-full bg-red-400 pt-2">
             <HeadingToolbar
               style={{
