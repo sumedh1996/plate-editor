@@ -5,7 +5,6 @@ import { useEditorRef } from '@udecode/plate-core';
 // import AddIcon from '@/../../public/Add.svg';
 import { useEditorContext } from '../../../../context/EditorContext';
 import LineBreakBtn from '../LineBreak';
-import EmbedButton from '../EmbedButton';
 // import EmbedButton from '../InsertMediaButton';
 // import ImageSearch from '../ImageButton';
 // import ImageUpload from '../ImageUpload';
@@ -67,7 +66,6 @@ PopupMenuProps) {
 
   const buttons = [
     <LineBreakBtn setNode={setNode} />,
-    <EmbedButton editor={editor} location={editorLocation} setNode={setNode} />,
   ];
 
   // if (

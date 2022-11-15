@@ -1,15 +1,13 @@
-import { ELEMENT_MEDIA_EMBED } from "@udecode/plate";
+import { ELEMENT_MEDIA_EMBED, ELEMENT_OL, ELEMENT_UL } from "@udecode/plate";
 import {
   CodeBlockElement,
   createPlateUI,
   ELEMENT_CODE_BLOCK,
   ELEMENT_HR,
   ELEMENT_PARAGRAPH,
-  MediaEmbedElement,
   StyledElement,
   withProps,
 } from "@udecode/plate";
-import { EmbedElement } from "../elements/EmbedElement";
 import { HRElement } from "../elements/HRElement";
 
 export const plateUI = createPlateUI({
@@ -26,5 +24,20 @@ export const plateUI = createPlateUI({
     prefixClassNames: "p",
   }),
   [ELEMENT_HR]: HRElement,
-  [ELEMENT_MEDIA_EMBED]: EmbedElement,
+  [ELEMENT_OL]: withProps(StyledElement, {
+    as: "ol",
+    styles: {
+      root: {
+        listStyle: "decimal",
+      },
+    },
+  }),
+  [ELEMENT_UL]: withProps(StyledElement, {
+    as: "ol",
+    styles: {
+      root: {
+        listStyle: "disc",
+      },
+    },
+  }),
 });

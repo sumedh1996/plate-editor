@@ -19,8 +19,10 @@ import {
   useEventPlateId,
   ELEMENT_HR,
   LinkToolbarButton,
+  useEditorRef,
 } from "@udecode/plate";
 import { ReactEditor } from "slate-react";
+import { useMyPlateEditorRef } from "../../types/PlateTypes";
 // import HeadingIcon from "@/../../public/H1.svg";
 // import QuoteIcon from "@/../../public/blockquote.svg";
 // import HeadingTwoIcon from "@/../../public/h2.svg";
@@ -88,7 +90,8 @@ export const ToolbarButtonsBasicElements = React.memo(() => {
 });
 
 export const ToolbarButtonsList = React.memo(() => {
-  const editor = usePlateEditorRef(useEventPlateId("focus"));
+  // const editor = useMyPlateEditorRef();
+  const editor = useEditorRef();
 
   return (
     <>

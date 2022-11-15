@@ -24,6 +24,8 @@ import {
   ELEMENT_HR,
   createMediaEmbedPlugin,
   createLinkPlugin,
+  createListPlugin,
+  createTodoListPlugin,
 } from "@udecode/plate";
 import { createJuicePlugin } from "@udecode/plate-juice";
 import { createMyPlugins, MyValue } from "./types/PlateTypes";
@@ -142,7 +144,9 @@ const NewEditor = () => {
       createDeserializeCsvPlugin(),
       createJuicePlugin(),
       createMediaEmbedPlugin(),
-      createLinkPlugin(linkPlugin)
+      createLinkPlugin(linkPlugin),
+      createListPlugin(),
+      createTodoListPlugin(),
     ],
     {
       components: plateUI,
