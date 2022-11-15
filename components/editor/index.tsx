@@ -41,10 +41,9 @@ import { softBreakPlugin } from './plugins/SoftBreakPlugin';
 import { ToolbarButtons } from './config/Toolbar';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import SideToolbar from './config/SideToolbar';
 import { useEditorContext } from '../../context/EditorContext';
 import { linkPlugin } from './plugins/LinkPlugin';
-import SideToolBar from './config/SideToolbar';
+import SideToolBar from './config/SideToolBar';
 
 const NewEditor = () => {
   const [selectedNode, setSelectedNode] = useState<
