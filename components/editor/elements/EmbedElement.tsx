@@ -19,8 +19,8 @@ export interface MediaEmbedElementStyles {
 }
 
 export type MediaEmbedElementProps = StyledElementProps<
-  PlateRenderElementProps<MyValue, TElement>,
-  MediaEmbedElementStyles
+  MediaEmbedElementStyles,
+  PlateRenderElementProps<MyValue, TElement>
 >;
 
 export const EmbedElement = (props: MediaEmbedElementProps) => {
@@ -90,7 +90,7 @@ export const EmbedElement = (props: MediaEmbedElementProps) => {
         }}
       >
         {element.script ? (
-          <div >
+          <div>
             <iframe
               ref={embedRef}
               style={{
@@ -121,7 +121,7 @@ export const EmbedElement = (props: MediaEmbedElementProps) => {
             />
           </div>
         ) : (
-          <div >
+          <div>
             <iframe
               style={{
                 minHeight: "26rem",
