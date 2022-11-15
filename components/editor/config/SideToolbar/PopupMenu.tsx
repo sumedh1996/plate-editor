@@ -1,10 +1,11 @@
 /* eslint-disable */
 // stale
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useEditorRef } from '@udecode/plate-core';
 // import AddIcon from '@/../../public/Add.svg';
 import { useEditorContext } from '../../../../context/EditorContext';
 import LineBreakBtn from '../LineBreak';
+import ImageUpload from './ImageUpload';
 // import EmbedButton from '../InsertMediaButton';
 // import ImageSearch from '../ImageButton';
 // import ImageUpload from '../ImageUpload';
@@ -63,9 +64,15 @@ function PopupMenu({
 PopupMenuProps) {
   const editor = useEditorRef();
   const { editorLocation } = useEditorContext();
+  const [imageArr, setImageArr] = useState<any>();
 
   const buttons = [
     <LineBreakBtn setNode={setNode} />,
+    <ImageUpload
+      setNode={setNode}
+      imageArr={imageArr}
+      setImageArr={setImageArr}
+    />,
   ];
 
   // if (

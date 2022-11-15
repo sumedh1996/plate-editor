@@ -14,7 +14,7 @@ export const HRElement = ({
       <hr
         style={{
           height: 4,
-          background: selected ? 'blue' : '#008080',
+          background: selected ? '#008080' : '#333',
           marginTop: '26px',
           marginBottom: '26px',
         }}
