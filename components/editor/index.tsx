@@ -23,6 +23,7 @@ import {
   createSelectOnBackspacePlugin,
   ELEMENT_HR,
   createMediaEmbedPlugin,
+  createLinkPlugin,
 } from "@udecode/plate";
 import { createJuicePlugin } from "@udecode/plate-juice";
 import { createMyPlugins, MyValue } from "./types/PlateTypes";
@@ -36,6 +37,7 @@ import { ToolbarButtons } from "./config/Toolbar";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import SideToolbar from "./config/SideToolBar";
+import { linkPlugin } from "./plugins/LinkPlugin";
 
 const NewEditor = () => {
   const [selectedNode, setSelectedNode] = useState<
@@ -140,6 +142,7 @@ const NewEditor = () => {
       createDeserializeCsvPlugin(),
       createJuicePlugin(),
       createMediaEmbedPlugin(),
+      createLinkPlugin(linkPlugin)
     ],
     {
       components: plateUI,

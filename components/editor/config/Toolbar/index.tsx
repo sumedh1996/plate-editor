@@ -1,6 +1,6 @@
 /* eslint-disable */
-import React, { useContext, useEffect } from 'react';
-import { Tooltip } from 'antd';
+import React, { useContext, useEffect } from "react";
+import { Tooltip } from "antd";
 import {
   BlockToolbarButton,
   ELEMENT_BLOCKQUOTE,
@@ -18,8 +18,9 @@ import {
   usePlateEditorRef,
   useEventPlateId,
   ELEMENT_HR,
-} from '@udecode/plate';
-import { ReactEditor } from 'slate-react';
+  LinkToolbarButton,
+} from "@udecode/plate";
+import { ReactEditor } from "slate-react";
 // import HeadingIcon from "@/../../public/H1.svg";
 // import QuoteIcon from "@/../../public/blockquote.svg";
 // import HeadingTwoIcon from "@/../../public/h2.svg";
@@ -37,16 +38,16 @@ import { ReactEditor } from 'slate-react';
 // import { EditorContext } from "@/Context/EditorContext";
 
 let OSName: string | undefined;
-if (typeof navigator !== 'undefined') {
-  if (navigator.appVersion.indexOf('Mac') != -1) {
-    OSName = 'Mac';
+if (typeof navigator !== "undefined") {
+  if (navigator.appVersion.indexOf("Mac") != -1) {
+    OSName = "Mac";
   } else {
-    OSName = 'Win';
+    OSName = "Win";
   }
 }
 
 export const ToolbarButtonsBasicElements = React.memo(() => {
-  const editor = usePlateEditorRef(useEventPlateId('focus'));
+  const editor = usePlateEditorRef(useEventPlateId("focus"));
 
   return (
     <>
@@ -87,7 +88,7 @@ export const ToolbarButtonsBasicElements = React.memo(() => {
 });
 
 export const ToolbarButtonsList = React.memo(() => {
-  const editor = usePlateEditorRef(useEventPlateId('focus'));
+  const editor = usePlateEditorRef(useEventPlateId("focus"));
 
   return (
     <>
@@ -104,7 +105,7 @@ export const ToolbarButtonsList = React.memo(() => {
 });
 
 export const ToolbarButtonsBasicMarks = React.memo(() => {
-  const editor = usePlateEditorRef(useEventPlateId('focus'));
+  const editor = usePlateEditorRef(useEventPlateId("focus"));
 
   return (
     <>
@@ -125,7 +126,7 @@ export const ToolbarButtonsBasicMarks = React.memo(() => {
 });
 
 export const ToolbarButtons = React.memo(() => {
-  const editor = usePlateEditorRef(useEventPlateId('focus'));
+  const editor = usePlateEditorRef(useEventPlateId("focus"));
   //   const { setLinkLocation }: any = useContext(EditorContext);
 
   // useEffect(() => {
@@ -134,7 +135,7 @@ export const ToolbarButtons = React.memo(() => {
 
   function handleLink() {
     // setLinkLocation(editor.selection);
-    console.log('Hello');
+    console.log("Hello");
   }
 
   return (
@@ -142,16 +143,7 @@ export const ToolbarButtons = React.memo(() => {
       <ToolbarButtonsBasicElements />
       <ToolbarButtonsList />
       <ToolbarButtonsBasicMarks />
-      <button onClick={handleLink}>
-        {/* <Tooltip
-          getPopupContainer={(trigger) =>
-                                  trigger.parentNode as HTMLElement
-                                }
-          title="Link"
-        >
-          <LinkIcon />
-        </Tooltip> */}
-      </button>
+      <LinkToolbarButton icon={<p>Link</p>} />
       {/* <EmojiButton />
       <Shortcuts /> */}
       <BlockToolbarButton
