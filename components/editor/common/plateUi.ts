@@ -1,3 +1,4 @@
+import { ELEMENT_MEDIA_EMBED } from "@udecode/plate";
 import {
   CodeBlockElement,
   createPlateUI,
@@ -7,8 +8,9 @@ import {
   MediaEmbedElement,
   StyledElement,
   withProps,
-} from '@udecode/plate';
-import { HRElement } from '../elements/HRElement';
+} from "@udecode/plate";
+import { EmbedElement } from "../elements/EmbedElement";
+import { HRElement } from "../elements/HRElement";
 
 export const plateUI = createPlateUI({
   [ELEMENT_CODE_BLOCK]: CodeBlockElement,
@@ -24,4 +26,5 @@ export const plateUI = createPlateUI({
     prefixClassNames: "p",
   }),
   [ELEMENT_HR]: HRElement,
+  [ELEMENT_MEDIA_EMBED]: EmbedElement,
 });

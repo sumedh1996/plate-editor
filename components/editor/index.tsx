@@ -22,18 +22,19 @@ import {
   createParagraphPlugin,
   createSelectOnBackspacePlugin,
   ELEMENT_HR,
-} from '@udecode/plate';
-import { createJuicePlugin } from '@udecode/plate-juice';
-import { createMyPlugins, MyValue } from './types/PlateTypes';
-import { lineHeightPlugin } from './plugins/LineHeightPlugin';
-import { alignPlugin } from './plugins/AlignPlugin';
-import { indentPlugin } from './plugins/IndentPlugin';
-import { plateUI } from './common/plateUi';
-import { basicNodesPlugins } from './plugins/BasicNodesPlugin';
-import { softBreakPlugin } from './plugins/SoftBreakPlugin';
-import { ToolbarButtons } from './config/Toolbar';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+  createMediaEmbedPlugin,
+} from "@udecode/plate";
+import { createJuicePlugin } from "@udecode/plate-juice";
+import { createMyPlugins, MyValue } from "./types/PlateTypes";
+import { lineHeightPlugin } from "./plugins/LineHeightPlugin";
+import { alignPlugin } from "./plugins/AlignPlugin";
+import { indentPlugin } from "./plugins/IndentPlugin";
+import { plateUI } from "./common/plateUi";
+import { basicNodesPlugins } from "./plugins/BasicNodesPlugin";
+import { softBreakPlugin } from "./plugins/SoftBreakPlugin";
+import { ToolbarButtons } from "./config/Toolbar";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import SideToolbar from "./config/SideToolBar";
 
 const NewEditor = () => {
@@ -138,6 +139,7 @@ const NewEditor = () => {
       createSoftBreakPlugin(softBreakPlugin),
       createDeserializeCsvPlugin(),
       createJuicePlugin(),
+      createMediaEmbedPlugin(),
     ],
     {
       components: plateUI,
@@ -146,7 +148,7 @@ const NewEditor = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div ref={containerRef} style={{ position: 'relative' }}>
+      <div ref={containerRef} style={{ position: "relative" }}>
         <Plate editableProps={editableProps} plugins={plugins}>
           <SideToolbar node={selectedNode} setNode={setSelectedNode} />
           <div className="z-10 fixed top-0 left-0 w-full bg-red-400 pt-2">
