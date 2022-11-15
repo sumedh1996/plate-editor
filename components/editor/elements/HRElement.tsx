@@ -1,20 +1,25 @@
-import { PlateRenderElementProps, TElement } from '@udecode/plate';
+import { PlateRenderElementProps, TElement, useFocus } from '@udecode/plate';
 import React from 'react';
+import { useSelected } from 'slate-react';
 import { MyValue } from '../types/PlateTypes';
 
 export const HRElement = ({
   attributes,
   children,
-}: PlateRenderElementProps<MyValue, TElement>) => (
-  <div {...attributes} contentEditable={false}>
-    <hr
-      style={{
-        height: 2,
-        background: '#008080',
-        marginTop: '26px',
-        marginBottom: '26px',
-      }}
-    />
-    {children}
-  </div>
-);
+}: PlateRenderElementProps<MyValue, TElement>) => {
+  const selected = useSelected();
+
+  return (
+    <div {...attributes} contentEditable={false}>
+      <hr
+        style={{
+          height: 4,
+          background: selected ? 'blue' : '#008080',
+          marginTop: '26px',
+          marginBottom: '26px',
+        }}
+      />
+      {children}
+    </div>
+  );
+};
