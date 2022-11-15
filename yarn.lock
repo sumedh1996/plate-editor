@@ -1848,6 +1848,11 @@ electron-to-chromium@^1.4.251:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.284.tgz#61046d1e4cab3a25238f6bf7413795270f125592"
   integrity sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==
 
+emoji-picker-element@^1.13.1:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/emoji-picker-element/-/emoji-picker-element-1.13.1.tgz#721e2afb72c546f8f0b33766bd792b2dc70e4480"
+  integrity sha512-xOUYg6piwCmnYJw5Uh47rV5F2CwcFZcbfZx5jzU43gELJDbg8hrv6CBsikVe5VJSyiUH+N2QeQHc2f0h+V74PA==
+
 emoji-regex@^9.2.2:
   version "9.2.2"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-9.2.2.tgz#840c8803b0d8047f4ff0cf963176b32d4ef3ed72"

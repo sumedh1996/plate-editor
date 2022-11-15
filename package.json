@@ -16,6 +16,7 @@
     "@udecode/plate": "^18.9.0",
     "@udecode/plate-juice": "^18.9.0",
     "antd": "^4.24.1",
+    "emoji-picker-element": "^1.13.1",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.2",
     "next": "13.0.2",

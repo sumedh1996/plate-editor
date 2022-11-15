@@ -23,6 +23,8 @@ import {
 } from "@udecode/plate";
 import { ReactEditor } from "slate-react";
 import { useMyPlateEditorRef } from "../../types/PlateTypes";
+import Shortcuts from "../../elements/Shortcuts";
+import EmojiButton from "../../elements/EmojiPanel";
 // import HeadingIcon from "@/../../public/H1.svg";
 // import QuoteIcon from "@/../../public/blockquote.svg";
 // import HeadingTwoIcon from "@/../../public/h2.svg";
@@ -147,8 +149,8 @@ export const ToolbarButtons = React.memo(() => {
       <ToolbarButtonsList />
       <ToolbarButtonsBasicMarks />
       <LinkToolbarButton icon={<p>Link</p>} />
-      {/* <EmojiButton />
-      <Shortcuts /> */}
+      <EmojiButton />
+      <Shortcuts />
     </>
   );
 });
