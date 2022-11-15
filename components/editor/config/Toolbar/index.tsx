@@ -149,10 +149,6 @@ export const ToolbarButtons = React.memo(() => {
       <LinkToolbarButton icon={<p>Link</p>} />
       {/* <EmojiButton />
       <Shortcuts /> */}
-      <BlockToolbarButton
-        type={getPluginType(editor, ELEMENT_HR)}
-        icon={<div>HR</div>}
-      />
     </>
   );
 });

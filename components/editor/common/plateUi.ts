@@ -1,3 +1,4 @@
+import { EmbedElement } from "./../elements/EmbedElement";
 import { ELEMENT_MEDIA_EMBED, ELEMENT_OL, ELEMENT_UL } from "@udecode/plate";
 import {
   CodeBlockElement,
@@ -65,4 +66,5 @@ export const plateUI = createPlateUI({
       },
     },
   }),
+  [ELEMENT_MEDIA_EMBED]: EmbedElement,
 });
