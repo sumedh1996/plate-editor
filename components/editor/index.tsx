@@ -38,8 +38,8 @@ import { softBreakPlugin } from "./plugins/SoftBreakPlugin";
 import { ToolbarButtons } from "./config/Toolbar";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import SideToolbar from "./config/SideToolBar";
 import { linkPlugin } from "./plugins/LinkPlugin";
+import SideToolbar from "./config/SideToolBar/index";
 
 const NewEditor = () => {
   const [selectedNode, setSelectedNode] = useState<
