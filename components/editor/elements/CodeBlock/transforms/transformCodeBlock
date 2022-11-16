@@ -1,0 +1,73 @@
+import { ReactEditor } from 'slate-react';
+import { HistoryEditor } from 'slate-history';
+/* eslint-disable */
+import { getNodes, setNodes, someNode, wrapNodes } from '@udecode/plate';
+import { getPluginType, PlateEditor, TElement } from '@udecode/plate-core';
+import { ELEMENT_PARAGRAPH } from '@udecode/plate-paragraph';
+import { ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE } from '../defaults';
+import { unwrapCodeBlock } from './unwrapCodeBlock';
+
+export const toggleCodeBlock = (
+  editor: PlateEditor & HistoryEditor & ReactEditor
+) => {
+  if (!editor.selection) return;
+
+  const isActive = someNode(editor, {
+    match: { type: getPluginType(editor, ELEMENT_CODE_BLOCK) },
+  });
+
+  setNodes<TElement>(editor, {
+    type: ELEMENT_CODE_LINE,
+    children: [
+      {
+        text: '',
+      },
+    ],
+  });
+
+  if (!isActive) {
+    const codeBlock = {
+      type: getPluginType(editor, ELEMENT_CODE_BLOCK),
+      children: [],
+    };
+    wrapNodes(editor, codeBlock);
+
+    const nodes = [
+      // @ts-ignore
+      ...getNodes(editor, {
+        match: { type: getPluginType(editor, ELEMENT_CODE_LINE) },
+      }),
+    ];
+
+    const codeLine = {
+      type: getPluginType(editor, ELEMENT_CODE_LINE),
+      children: [],
+    };
+
+    for (const [, path] of nodes) {
+      setNodes<TElement>(editor, codeLine, {
+        at: path,
+      });
+    }
+  } else {
+    const paragraph = {
+      type: getPluginType(editor, ELEMENT_PARAGRAPH),
+      children: [],
+    };
+
+    const nodes = [
+      // @ts-ignore
+      ...getNodes(editor, {
+        match: { type: getPluginType(editor, ELEMENT_CODE_LINE) },
+      }),
+    ];
+
+    for (const [, path] of nodes) {
+      setNodes<TElement>(editor, paragraph, {
+        at: path,
+      });
+    }
+
+    unwrapCodeBlock(editor);
+  }
+};

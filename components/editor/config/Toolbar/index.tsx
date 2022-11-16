@@ -1,6 +1,6 @@
 /* eslint-disable */
-import React, { useContext, useEffect } from "react";
-import { Tooltip } from "antd";
+import React, { useContext, useEffect } from 'react';
+import { Tooltip } from 'antd';
 import {
   BlockToolbarButton,
   ELEMENT_BLOCKQUOTE,
@@ -20,11 +20,15 @@ import {
   ELEMENT_HR,
   LinkToolbarButton,
   useEditorRef,
-} from "@udecode/plate";
-import { ReactEditor } from "slate-react";
-import { useMyPlateEditorRef } from "../../types/PlateTypes";
-import Shortcuts from "../../elements/Shortcuts";
-import EmojiButton from "../../elements/EmojiPanel";
+  CodeBlockToolbarButton,
+  getPreventDefaultHandler,
+  toggleCodeBlock,
+} from '@udecode/plate';
+import { ReactEditor } from 'slate-react';
+import { useMyPlateEditorRef } from '../../types/PlateTypes';
+import Shortcuts from '../../elements/Shortcuts';
+import EmojiButton from '../../elements/EmojiPanel';
+import { ToolbarCodeBlock } from './ToolbarCodeBlock';
 // import HeadingIcon from "@/../../public/H1.svg";
 // import QuoteIcon from "@/../../public/blockquote.svg";
 // import HeadingTwoIcon from "@/../../public/h2.svg";
@@ -42,16 +46,17 @@ import EmojiButton from "../../elements/EmojiPanel";
 // import { EditorContext } from "@/Context/EditorContext";
 
 let OSName: string | undefined;
-if (typeof navigator !== "undefined") {
-  if (navigator.appVersion.indexOf("Mac") != -1) {
-    OSName = "Mac";
+if (typeof navigator !== 'undefined') {
+  if (navigator.appVersion.indexOf('Mac') != -1) {
+    OSName = 'Mac';
   } else {
-    OSName = "Win";
+    OSName = 'Win';
   }
 }
 
 export const ToolbarButtonsBasicElements = React.memo(() => {
-  const editor = usePlateEditorRef(useEventPlateId("focus"));
+  // const editor = usePlateEditorRef(useEventPlateId('focus'));
+  const editor = useEditorRef();
 
   return (
     <>
@@ -87,6 +92,8 @@ export const ToolbarButtonsBasicElements = React.memo(() => {
         type={getPluginType(editor, MARK_CODE)}
         icon={<h1>Inline</h1>}
       />
+      {/* <ToolbarCodeBlock icon={<span>CB</span>} /> */}
+      <CodeBlockToolbarButton icon={<span>CB</span>} />
     </>
   );
 });
@@ -110,7 +117,8 @@ export const ToolbarButtonsList = React.memo(() => {
 });
 
 export const ToolbarButtonsBasicMarks = React.memo(() => {
-  const editor = usePlateEditorRef(useEventPlateId("focus"));
+  // const editor = usePlateEditorRef(useEventPlateId('focus'));
+  const editor = useEditorRef();
 
   return (
     <>
@@ -131,17 +139,12 @@ export const ToolbarButtonsBasicMarks = React.memo(() => {
 });
 
 export const ToolbarButtons = React.memo(() => {
-  const editor = usePlateEditorRef(useEventPlateId("focus"));
+  // const editor = usePlateEditorRef(useEventPlateId('focus'));
   //   const { setLinkLocation }: any = useContext(EditorContext);
 
   // useEffect(() => {
   //   ReactEditor.focus(editor);
   // }, []);
-
-  function handleLink() {
-    // setLinkLocation(editor.selection);
-    console.log("Hello");
-  }
 
   return (
     <>
