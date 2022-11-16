@@ -6,12 +6,7 @@ import React, {
   useState,
 } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
-import {
-  ImageElementProps,
-  insertNodes,
-  setNodes,
-  TImageElement,
-} from '@udecode/plate';
+import { insertNodes, setNodes, TImageElement } from '@udecode/plate';
 import { PlateRenderElementProps, useEditorRef } from '@udecode/plate-core';
 import { ReactEditor, useFocused, useSelected } from 'slate-react';
 import { getImageElementStyles } from '@udecode/plate';
@@ -27,7 +22,6 @@ import { MyValue } from '../types/PlateTypes';
 export const ImageElement = (
   props: PlateRenderElementProps<MyValue, TImageElement>
 ) => {
-  console.log({ props });
   const {
     attributes,
     children,
@@ -136,7 +130,7 @@ export const ImageElement = (
     >
       <figure
         // @ts-ignore
-        style={styles.figure?.css[0]}
+        style={styles.figure?.css[1]}
         // @ts-ignore
         className={`group ${styles.figure?.className} relative`}
       >

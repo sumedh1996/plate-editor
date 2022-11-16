@@ -1,5 +1,5 @@
-import { EmbedElement } from "./../elements/EmbedElement";
-import { ELEMENT_MEDIA_EMBED, ELEMENT_OL, ELEMENT_UL } from "@udecode/plate";
+import { EmbedElement } from './../elements/EmbedElement';
+import { ELEMENT_MEDIA_EMBED, ELEMENT_OL, ELEMENT_UL } from '@udecode/plate';
 import {
   CodeBlockElement,
   createPlateUI,
@@ -9,60 +9,53 @@ import {
   ELEMENT_PARAGRAPH,
   StyledElement,
   withProps,
-} from "@udecode/plate";
+} from '@udecode/plate';
 
-import { HRElement } from "../elements/HRElement";
-import { ImageElement } from "../elements/ImageElement";
+import { HRElement } from '../elements/HRElement';
+import { ImageElement } from '../elements/ImageElement';
 
 export const plateUI = createPlateUI({
   [ELEMENT_CODE_BLOCK]: CodeBlockElement,
   [ELEMENT_PARAGRAPH]: withProps(StyledElement, {
-    as: "p",
+    as: 'p',
     styles: {
       root: {
-        position: "relative",
+        position: 'relative',
         margin: 0,
-        padding: "4px 0",
+        padding: '4px 0',
       },
     },
-    prefixClassNames: "p",
+    prefixClassNames: 'p',
   }),
   [ELEMENT_HR]: HRElement,
   [ELEMENT_OL]: withProps(StyledElement, {
-    as: "ol",
+    as: 'ol',
     styles: {
       root: {
-        listStyle: "decimal",
+        listStyle: 'decimal',
       },
     },
   }),
   [ELEMENT_UL]: withProps(StyledElement, {
-    as: "ol",
+    as: 'ol',
     styles: {
       root: {
-        listStyle: "disc",
+        listStyle: 'disc',
       },
     },
   }),
   [ELEMENT_IMAGE]: withProps(ImageElement, {
     nodeProps: {
-      class: "tealfeed-blog-image",
+      class: 'tealfeed-blog-image',
     },
     // @ts-ignore
     styles: {
       root: {
-        // minHeight: '40rem !important',
-        width: "200px",
-        height: "200px",
-        maxHeight: "200px !important",
-        maxWidth: "200px !important",
-        margin: "auto",
-        background: "red !important",
+        margin: 'auto',
       },
       img: {
-        width: "100% !important",
-        margin: "auto",
-        minHeight: "40rem !important",
+        width: '100%',
+        margin: 'auto',
       },
     },
   }),

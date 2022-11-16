@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useEffect, useRef, useState } from "react";
+import React, { HTMLAttributes, useEffect, useRef, useState } from 'react';
 import {
   createAlignPlugin,
   createDeserializeDocxPlugin,
@@ -29,21 +29,22 @@ import {
   ELEMENT_IMAGE,
   ELEMENT_PARAGRAPH,
   createTrailingBlockPlugin,
-} from "@udecode/plate";
-import { createJuicePlugin } from "@udecode/plate-juice";
-import { createMyPlugins, MyValue } from "./types/PlateTypes";
-import { lineHeightPlugin } from "./plugins/LineHeightPlugin";
-import { alignPlugin } from "./plugins/AlignPlugin";
-import { indentPlugin } from "./plugins/IndentPlugin";
-import { plateUI } from "./common/plateUi";
-import { basicNodesPlugins } from "./plugins/BasicNodesPlugin";
-import { softBreakPlugin } from "./plugins/SoftBreakPlugin";
-import { ToolbarButtons } from "./config/Toolbar";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { useEditorContext } from "../../context/EditorContext";
-import { linkPlugin } from "./plugins/LinkPlugin";
-import SideToolBar from "./config/SideToolBar";
+  ELEMENT_MEDIA_EMBED,
+} from '@udecode/plate';
+import { createJuicePlugin } from '@udecode/plate-juice';
+import { createMyPlugins, MyValue } from './types/PlateTypes';
+import { lineHeightPlugin } from './plugins/LineHeightPlugin';
+import { alignPlugin } from './plugins/AlignPlugin';
+import { indentPlugin } from './plugins/IndentPlugin';
+import { plateUI } from './common/plateUi';
+import { basicNodesPlugins } from './plugins/BasicNodesPlugin';
+import { softBreakPlugin } from './plugins/SoftBreakPlugin';
+import { ToolbarButtons } from './config/Toolbar';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { useEditorContext } from '../../context/EditorContext';
+import { linkPlugin } from './plugins/LinkPlugin';
+import SideToolBar from './config/SideToolBar';
 
 const NewEditor = () => {
   const [selectedNode, setSelectedNode] = useState<
@@ -57,26 +58,26 @@ const NewEditor = () => {
     spellCheck: true,
     autoFocus: false,
     readOnly: false,
-    placeholder: "Type…",
+    placeholder: 'Type…',
     onMouseUp: () => {
       const selection = window.getSelection();
       let container = selection?.focusNode;
       while (
         container &&
         container.parentElement &&
-        !container?.parentElement?.classList?.contains("slate-ImageElement") &&
-        container.parentElement.nodeName.toLowerCase() !== "p"
+        !container?.parentElement?.classList?.contains('slate-ImageElement') &&
+        container.parentElement.nodeName.toLowerCase() !== 'p'
       ) {
         container = container.parentElement;
       }
-      if (container?.parentElement?.nodeName.toLowerCase() !== "p") {
+      if (container?.parentElement?.nodeName.toLowerCase() !== 'p') {
         container = null;
       } else {
         container = container.parentElement;
       }
       if (
         selection?.focusNode?.nodeValue?.trim() ||
-        container?.nodeName.toLowerCase() !== "p"
+        container?.nodeName.toLowerCase() !== 'p'
       ) {
         setSelectedNode(null);
       } else {
@@ -103,19 +104,19 @@ const NewEditor = () => {
       while (
         container &&
         container.parentNode &&
-        !container?.parentElement?.classList?.contains("slate-ImageElement") &&
-        container.parentNode.nodeName.toLowerCase() !== "p"
+        !container?.parentElement?.classList?.contains('slate-ImageElement') &&
+        container.parentNode.nodeName.toLowerCase() !== 'p'
       ) {
         container = container.parentNode;
       }
-      if (container?.parentElement?.nodeName.toLowerCase() !== "p") {
+      if (container?.parentElement?.nodeName.toLowerCase() !== 'p') {
         container = null;
       } else {
         container = container.parentElement;
       }
       if (
         selection?.focusNode?.nodeValue?.trim() ||
-        container?.nodeName.toLowerCase() !== "p"
+        container?.nodeName.toLowerCase() !== 'p'
       ) {
         setSelectedNode(null);
       } else {
@@ -130,7 +131,9 @@ const NewEditor = () => {
       createImagePlugin(),
       createHorizontalRulePlugin(),
       createSelectOnBackspacePlugin({
-        options: { query: { allow: [ELEMENT_HR, ELEMENT_IMAGE] } },
+        options: {
+          query: { allow: [ELEMENT_HR, ELEMENT_IMAGE, ELEMENT_MEDIA_EMBED] },
+        },
       }),
       createLineHeightPlugin(lineHeightPlugin),
       createParagraphPlugin(),
@@ -163,24 +166,26 @@ const NewEditor = () => {
   );
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <div ref={containerRef} style={{ position: "relative" }}>
-        <Plate editableProps={editableProps} plugins={plugins}>
-          <SideToolBar node={selectedNode} setNode={setSelectedNode} />
-          <div className="z-10 fixed top-0 left-0 w-full bg-red-400 pt-2">
-            <HeadingToolbar
-              style={{
-                border: "none",
-              }}
-            >
-              <div className="w-1/2 mx-auto z-10 rounded-lg flex items-center justify-around flex-wrap pt-12 xl:pt-0">
-                <ToolbarButtons />
-              </div>
-            </HeadingToolbar>
-          </div>
-        </Plate>
-      </div>
-    </DndProvider>
+    <div className='max-w-3xl mx-auto'>
+      <DndProvider backend={HTML5Backend}>
+        <div ref={containerRef} style={{ position: 'relative' }}>
+          <Plate editableProps={editableProps} plugins={plugins}>
+            <SideToolBar node={selectedNode} setNode={setSelectedNode} />
+            <div className='z-10 fixed top-0 left-0 w-full bg-red-400 pt-2'>
+              <HeadingToolbar
+                style={{
+                  border: 'none',
+                }}
+              >
+                <div className='w-1/2 mx-auto z-10 rounded-lg flex items-center justify-around flex-wrap pt-12 xl:pt-0'>
+                  <ToolbarButtons />
+                </div>
+              </HeadingToolbar>
+            </div>
+          </Plate>
+        </div>
+      </DndProvider>
+    </div>
   );
 };
 
