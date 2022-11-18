@@ -1,5 +1,4 @@
 import { EmbedElement } from "./../elements/EmbedElement";
-import "../../../styles/globals.css";
 import {
   ELEMENT_BLOCKQUOTE,
   ELEMENT_H1,
