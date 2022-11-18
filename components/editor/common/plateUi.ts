@@ -1,5 +1,8 @@
 import { EmbedElement } from "./../elements/EmbedElement";
+import "../../../styles/globals.css";
 import {
+  ELEMENT_BLOCKQUOTE,
+  ELEMENT_H1,
   ELEMENT_LINK,
   ELEMENT_MEDIA_EMBED,
   ELEMENT_OL,
@@ -28,6 +31,7 @@ export const plateUI = createPlateUI({
         position: "relative",
         margin: 0,
         padding: "4px 0",
+        color: "var(--text-error)",
       },
     },
     prefixClassNames: "p",
@@ -69,6 +73,31 @@ export const plateUI = createPlateUI({
     styles: {
       root: {
         color: "#008080",
+      },
+    },
+  }),
+  [ELEMENT_H1]: withProps(StyledElement, {
+    styles: {
+      root: {
+        margin: "32 0 16 0",
+        color: "var(--text-primary)",
+        fontSize: "20rem",
+        lineHeight: "2.5rem",
+        fontFamily: "Roboto",
+        fontWeight: 500,
+      },
+    },
+  }),
+  [ELEMENT_BLOCKQUOTE]: withProps(StyledElement, {
+    styles: {
+      root: {
+        // --background-card: '#008080',
+        backgroundColor: `{}`,
+        // border-left: 5px solid var(--brandColor) !important;
+        // background-color: var(--notification-active) !important;
+        // padding: 20px !important;
+        // margin: 24px 0 26px 0 !important;
+        // color: var(--text-primary);
       },
     },
   }),
